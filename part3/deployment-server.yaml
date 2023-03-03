@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: config-server
+  name: config-server
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: config-server
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: config-server
+    spec:
+      containers:
+      - image: rey2rey/appserver2_new
+        name: appserver2-new-5pdx5
+        env:
+          - name: ENV_ARZNAME
+            valueFrom:
+              configMapKeyRef:
+                name: config-server
+                key: ENV_ARZNAME
+          - name: ENV_TIME
+            valueFrom:
+              configMapKeyRef:
+                name: config-server
+                key: ENV_TIME
+          - name: ENV_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: config-server
+                key: ENV_PORT
+          - name: ENV_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: config-server
+                key: ENV_HOST

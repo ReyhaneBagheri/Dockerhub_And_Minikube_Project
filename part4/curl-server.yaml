@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: curl-server
+  name: curl-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: curl-server
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: curl-server
+    spec:
+      containers:
+      - image:  rey2rey/myimagehub
+        name: myimagehub
+        command: ["/bin/sleep"]
+        args: ["infinity"]
+        resources: {}
+status: {}
